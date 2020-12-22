@@ -1,30 +1,50 @@
-# y
+# React material event calendar
 
-> A lightweight event calendar based on material ui
+    Simple calendar component based on @material-ui/core
 
-[![NPM](https://img.shields.io/npm/v/y.svg)](https://www.npmjs.com/package/y) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
+## Installation
+
 
 ```bash
-npm install --save y
-```
+npm i react-material-event-calendar
 
+"peerDependencies": {
+  "@material-ui/core"
+   "@material-ui/icons"
+ }
+
+```
+ 
 ## Usage
 
-```jsx
-import React, { Component } from 'react'
+```nodejs
+import Calender from 'react-material-event-calendar'
 
-import MyComponent from 'y'
-import 'y/dist/index.css'
+function App() {
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
+//selected days will be available here
+ const getSelectedDays = (days) => {
+      console.log(days)
   }
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+  return (
+    <div className="App">
+      <header className="App-header">
+      <Calender month={currentMonth} title="Calender" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing', color :'red' } }, {'8': { 'info': 'testing2' }}] }} />
+      </header>
+    </div>
+  );
 }
+
+# You can pass the callback function on date select via getSelectedDays.
+# List of preselected days can be passed via selectedDays ( you can pass month and dates as in example above ) 
+  info refers to tool tip to be show and color refers to background color( default is blue).
 ```
 
-## License
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-GPL © [hexad3cimal](https://github.com/hexad3cimal)
+Please make sure to update tests as appropriate.
