@@ -1,10 +1,20 @@
-import React from 'react'
+import React from 'react';
+import Calender from 'react-material-event-calendar'
 
-import { ExampleComponent } from 'y'
-import 'y/dist/index.css'
-
-const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+function App() {
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+  const getSelectedDays = (days) => {
+      console.log(days)
+  }
+  return (
+    <div className="App">
+      <header className="App-header">
+      <Calender month={currentMonth} title="Calender" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing' ,color:'red' } }, {'8': { 'info': 'testing2' }}] }} />
+      </header>
+    </div>
+  );
 }
 
-export default App
+export default App;
