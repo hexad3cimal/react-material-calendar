@@ -51,12 +51,11 @@ const Month = (props) => {
       selectedDays.push({ [date]: { info: ' ' } })
       props.setDates(selectedDays)
     } else {
-      const index = selectedDays.reduce(function (current, day, index) {
-        if (Object.keys(day)[0] === String(date) && current === -1) {
-          return index
+      const index = selectedDays.findIndex((day) => {
+        if (Object.keys(day)[0] === String(date)) {
+          return true
         }
-        return current
-      }, -1)
+      })
       selectedDays.splice(index, 1)
       props.setDates(selectedDays)
     }
