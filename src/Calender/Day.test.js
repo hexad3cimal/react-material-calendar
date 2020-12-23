@@ -22,10 +22,28 @@ describe('Day component test', () => {
     expect(wrapper.find('td').hasClass('makeStyles-selected-1')).toBe(true)
   })
 
-  it('onclick should work', () => {
+  it('onclick should work when selected', () => {
     const click = jest.fn()
     wrapper = mount(<Day data={{ selected: true, date: 12 }} onClick={click} />)
     wrapper.find('td').simulate('click')
     expect(click).toBeCalled()
+  })
+
+  it('onclick should work when not selected', () => {
+    const click = jest.fn()
+    wrapper = mount(
+      <Day data={{ selected: false, date: 12 }} onClick={click} />
+    )
+    wrapper.find('td').simulate('click')
+    expect(click).toBeCalled()
+  })
+
+  it('test tool should be there when there is info prop', () => {
+    wrapper = mount(<Day data={{ selected: false, date: 12, info: 'hello' }} />)
+    expect(wrapper.find({ title: 'hello', arrow: true }).length).toBe(2)
+  })
+
+  it('test tool should not be there when there is no info prop', () => {
+    expect(wrapper.find({ title: 'hello', arrow: true }).length).toBe(0)
   })
 })

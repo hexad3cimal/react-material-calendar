@@ -10,20 +10,28 @@ const useStyles = makeStyles({
   }
 })
 const Day = (props) => {
+  return props.data.info ? (
+    <Tooltip title={props.data.info} arrow>
+      {getContent(props)}
+    </Tooltip>
+  ) : (
+    getContent(props)
+  )
+}
+
+const getContent = (props) => {
   const classes = useStyles()
 
   return props.data.selected === true ? (
-    <Tooltip title={props.data.info} arrow>
-      <TableCell
-        style={{ background: props.data.color }}
-        className={props.data.selected === true ? classes.selected : null}
-        onClick={() => {
-          props.onClick(props.data.date)
-        }}
-      >
-        {props.data.date}
-      </TableCell>
-    </Tooltip>
+    <TableCell
+      style={{ background: props.data.color }}
+      className={props.data.selected === true ? classes.selected : null}
+      onClick={() => {
+        props.onClick(props.data.date)
+      }}
+    >
+      {props.data.date}
+    </TableCell>
   ) : (
     <TableCell
       style={{ background: props.data.color }}
@@ -36,5 +44,4 @@ const Day = (props) => {
     </TableCell>
   )
 }
-
 export default Day
