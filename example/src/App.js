@@ -1,5 +1,5 @@
 import React from 'react';
-import Calender from 'react-material-event-calendar'
+import {Calender} from 'react-material-event-calendar'
 
 function App() {
   const today = new Date();

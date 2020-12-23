@@ -1,5 +1,9 @@
 # React material event calendar
 
+[![codecov](https://codecov.io/gh/hexad3cimal/react-material-calendar/branch/master/graph/badge.svg)](https://codecov.io/gh/hexad3cimal/react-material-calendar)
+
+
+
     Simple calendar component based on @material-ui/core
 
 
@@ -15,7 +19,7 @@ npm i react-material-event-calendar
  }
 
 ```
- 
+
 ## Usage
 
 ```nodejs
@@ -40,7 +44,7 @@ function App() {
 }
 
 # You can pass the callback function on date select via getSelectedDays.
-# List of preselected days can be passed via selectedDays ( you can pass month and dates as in example above ) 
+# List of preselected days can be passed via selectedDays ( you can pass month and dates as in example above )
   info refers to tool tip to be show and color refers to background color( default is blue).
 ```
 
