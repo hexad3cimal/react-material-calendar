@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import Month from './Month'
+import { act } from 'react-dom/test-utils'
 
 describe('Month component test', () => {
   let wrapper
@@ -27,8 +28,9 @@ describe('Month component test', () => {
         ]}
       />
     )
-
-    wrapper.find('Week').prop('onClick')(3)
+    act(() => {
+      wrapper.find('Week').prop('onClick')(3)
+    })
     expect(setDate).toBeCalledWith([{ 8: { info: 'testing2' } }])
   })
 
@@ -45,8 +47,9 @@ describe('Month component test', () => {
         ]}
       />
     )
-
-    wrapper.find('Week').prop('onClick')(6)
+    act(() => {
+      wrapper.find('Week').prop('onClick')(6)
+    })
     expect(setDate).toBeCalledWith([
       { 3: { info: 'testing', color: 'red' } },
       { 8: { info: 'testing2' } },

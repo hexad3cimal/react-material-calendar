@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/styles'
 import {
   Card,
   CardHeader,
   CardContent,
   Divider,
   CardActions,
-  Button, makeStyles
+  Button,
+  makeStyles
 } from '@material-ui/core'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   button: { display: 'unset' }
 }))
 
-export const Calender = (props) => {
+export const Calendar = (props) => {
   const [calenderProps, setProps] = useState({
     selectedDays: props.selectedDays,
     month: props.month,
@@ -33,7 +33,7 @@ export const Calender = (props) => {
     title: props.title
   })
 
-  const classes= useStyles()
+  const classes = useStyles()
   const nextMonth = () => {
     const currentYear =
       calenderProps.month === 11 ? calenderProps.year + 1 : calenderProps.year
@@ -141,6 +141,6 @@ export const Calender = (props) => {
   )
 }
 
-Calender.propTypes = {
+Calendar.propTypes = {
   className: PropTypes.string
 }

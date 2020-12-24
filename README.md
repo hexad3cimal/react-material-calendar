@@ -23,7 +23,7 @@ npm i react-material-event-calendar
 ## Usage
 
 ```nodejs
-import Calender from 'react-material-event-calendar'
+import Calendar from 'react-material-event-calendar'
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <Calender month={currentMonth} title="Calender" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing', color :'red' } }, {'8': { 'info': 'testing2' }}] }} />
+      <Calendar month={currentMonth} title="Calendar" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing', color :'red' } }, {'8': { 'info': 'testing2' }}] }} />
       </header>
     </div>
   );

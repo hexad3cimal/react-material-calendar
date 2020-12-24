@@ -1,5 +1,6 @@
 import React from 'react'
 import TableRow from '@material-ui/core/TableRow'
+import { v4 as uuid } from 'uuid'
 import Day from './Day'
 
 const Week = (props) => {
@@ -7,9 +8,9 @@ const Week = (props) => {
     props &&
     props.rows.map((row) => {
       return (
-        <TableRow>
+        <TableRow key={uuid()}>
           {row.map((date) => {
-            return <Day onClick={props.onClick} data={date} />
+            return <Day key={uuid()} onClick={props.onClick} data={date} />
           })}
         </TableRow>
       )
