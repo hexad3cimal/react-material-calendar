@@ -7,12 +7,12 @@ describe('Month component test', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(<Month month='1' year='2020' selectedDays={[3, 4, 10]} />)
+    wrapper = mount(<Month month='01' year='2020' selectedDays={[3, 4, 10]} />)
   })
   it('renders container', () => {
     expect(wrapper.find('Month').length).toBe(1)
-    expect(wrapper.find('Day').length).toBe(35)
-    expect(wrapper.find('Day').at(34).text()).toBe('29')
+    expect(wrapper.find('Day').length).toBe(34)
+    expect(wrapper.find('Day').at(33).text()).toBe('31')
   })
 
   it('should trigger onSelect on click of week pre-selected', () => {

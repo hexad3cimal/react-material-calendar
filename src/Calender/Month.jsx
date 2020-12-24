@@ -12,8 +12,8 @@ const isSelected = (date, selectedDays) => {
   return selectedDate
 }
 const getDays = (month, year, selectedDays) => {
-  const firstDayOfMonth = new Date(year, month).getDay()
-  const noOfDaysInMonth = 32 - new Date(year, month, 32).getDate()
+  const firstDayOfMonth = new Date(year, month - 1).getDay()
+  const noOfDaysInMonth = 32 - new Date(year, month - 1, 32).getDate()
   const days = []
   let date = 1
   for (let i = 0; i < 6; i++) {

@@ -7,7 +7,9 @@ import {
   Divider,
   CardActions,
   Button,
-  makeStyles
+  makeStyles,
+  TableHead,
+  TableCell
 } from '@material-ui/core'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -16,6 +18,7 @@ import Month from './Month'
 import Paper from '@material-ui/core/Paper'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
+import TableRow from '@material-ui/core/TableRow'
 
 const useStyles = makeStyles(() => ({
   actions: {
@@ -36,8 +39,12 @@ export const Calendar = (props) => {
   const classes = useStyles()
   const nextMonth = () => {
     const currentYear =
-      calenderProps.month === 11 ? calenderProps.year + 1 : calenderProps.year
-    const currentMonth = (calenderProps.month + 1) % 12
+      calenderProps.month === 12 ? calenderProps.year + 1 : calenderProps.year
+    const currentMonth =
+      calenderProps.month === 12
+        ? (calenderProps.month = 1)
+        : calenderProps.month + 1
+
     setProps({
       ...calenderProps,
       month: currentMonth,
@@ -47,9 +54,9 @@ export const Calendar = (props) => {
 
   const previousMonth = () => {
     const currentYear =
-      calenderProps.month === 0 ? calenderProps.year - 1 : calenderProps.year
+      calenderProps.month === 1 ? calenderProps.year - 1 : calenderProps.year
     const currentMonth =
-      calenderProps.month === 0 ? 11 : calenderProps.month - 1
+      calenderProps.month === 1 ? 12 : calenderProps.month - 1
     setProps({
       ...calenderProps,
       month: currentMonth,
@@ -58,7 +65,7 @@ export const Calendar = (props) => {
   }
 
   const setDates = (date) => {
-    const key = calenderProps.year + '-' + (parseInt(calenderProps.month) + 1)
+    const key = calenderProps.year + '-' + parseInt(calenderProps.month)
     const selectedDatesInCurrentMonth = calenderProps.selectedDays
     selectedDatesInCurrentMonth[key] = date
     setProps({
@@ -70,6 +77,7 @@ export const Calendar = (props) => {
   }
 
   const months = [
+    '',
     'Jan',
     'Feb',
     'Mar',
@@ -84,12 +92,22 @@ export const Calendar = (props) => {
     'Dec'
   ]
 
+  const days = props.days || [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
+
   return (
     <Card>
       <CardHeader
         action={
           <Button size='small' variant='text'>
-            {months[calenderProps.month]}
+            {months[calenderProps.month]}-{calenderProps.year}
           </Button>
         }
         title={calenderProps.title}
@@ -98,6 +116,13 @@ export const Calendar = (props) => {
       <CardContent>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='calender'>
+            <TableHead>
+              <TableRow>
+                {days.map((day) => {
+                  return <TableCell key={day}>{day}</TableCell>
+                })}
+              </TableRow>
+            </TableHead>
             <TableBody>
               <Month
                 month={calenderProps.month}
@@ -105,9 +130,7 @@ export const Calendar = (props) => {
                 setDates={setDates}
                 selectedDays={
                   calenderProps.selectedDays[
-                    calenderProps.year +
-                      '-' +
-                      (parseInt(calenderProps.month) + 1)
+                    calenderProps.year + '-' + parseInt(calenderProps.month)
                   ]
                 }
               />

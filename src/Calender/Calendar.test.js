@@ -15,7 +15,7 @@ describe('Calendar component test', () => {
         getSelectedDays={getSelectedDays}
         year={2020}
         selectedDays={{
-          '2020-5': [
+          '2020-4': [
             { 3: { info: 'testing', color: 'red' } },
             { 8: { info: 'testing2' } }
           ]
@@ -31,7 +31,7 @@ describe('Calendar component test', () => {
       wrapper.find('Day').at(10).prop('onClick')(10)
     })
     expect(getSelectedDays).toBeCalledWith({
-      '2020-5': [
+      '2020-4': [
         { 3: { color: 'red', info: 'testing' } },
         { 8: { info: 'testing2' } },
         { 10: { info: ' ' } }
@@ -42,14 +42,13 @@ describe('Calendar component test', () => {
     act(() => {
       wrapper.find('.MuiButton-label').at(2).simulate('click')
     })
-    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Jun')
+    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('May-2020')
   })
 
   it('should show previous month when clicked', () => {
-    console.log(wrapper.debug())
     act(() => {
       wrapper.find('.MuiButton-label').at(1).simulate('click')
     })
-    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Apr')
+    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Mar-2020')
   })
 })

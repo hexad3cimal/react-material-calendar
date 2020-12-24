@@ -3,7 +3,7 @@ import TableCell from '@material-ui/core/TableCell'
 import { makeStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 
-const useStyles = makeStyles({
+const getStyles = makeStyles({
   selected: {
     background: '#007cff',
     fontColor: 'white'
@@ -20,7 +20,7 @@ const Day = (props) => {
 }
 
 const getContent = (props) => {
-  const classes = useStyles()
+  const classes = getStyles()
 
   return props.data.selected === true ? (
     <TableCell
