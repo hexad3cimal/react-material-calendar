@@ -48,6 +48,19 @@ describe('Calendar component test', () => {
     expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('March')
   })
 
+  it('should change year when clicked', () => {
+    act(() => {
+      wrapper.find({ label: 'Select Year' }).at(0).prop('onChange')({
+        target: { value: 2019 }
+      })
+    })
+    wrapper.update()
+    expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('April')
+    expect(wrapper.find('.MuiSelect-selectMenu').at(0).text()).toBe('2019')
+
+    expect(wrapper.find('Day').length).toBe(31)
+  })
+
   it('should show previous month when clicked', () => {
     expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Previous')
 
@@ -56,5 +69,16 @@ describe('Calendar component test', () => {
     })
     expect(wrapper.find('.MuiSelect-selectMenu').at(0).text()).toBe('2020')
     expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('May')
+  })
+
+  it('should change month when clicked', () => {
+    act(() => {
+      wrapper.find({ label: 'Select Month' }).at(0).prop('onChange')({
+        target: { value: 10 }
+      })
+    })
+    wrapper.update()
+    expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('October')
+    expect(wrapper.find('.MuiSelect-selectMenu').at(0).text()).toBe('2020')
   })
 })
