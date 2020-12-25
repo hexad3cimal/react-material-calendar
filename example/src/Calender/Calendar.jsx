@@ -93,15 +93,16 @@ export const Calendar = (props) => {
       month: event.target.value
     })
   }
-  const days = getWeekDays(props.locale || 'en-US')
-  const months = getMonths(props.locale || 'en-US')
-  const years = getYears(
-    props.startYear || new Date().getUTCFullYear(),
-    props.yearLimit || 50
-  )
+  const days =
+    getWeekDays(props.locale ||'en-US')
+  const months = (getMonths(props.locale || 'en-US'))
+  const years = getYears(props.startYear || new Date().getUTCFullYear(),
+  props.yearLimit || 50)
   return (
     <Card>
-      <CardHeader title={calenderProps.title} />
+      <CardHeader title={calenderProps.title}>
+
+      </CardHeader>
       <Divider />
       <CardActions>
         <FormControl variant='outlined'>
@@ -112,13 +113,13 @@ export const Calendar = (props) => {
             label='Select Year'
           >
             {years &&
-              years.map((year) => {
-                return (
-                  <MenuItem key={year} value={year}>
-                    {year}
-                  </MenuItem>
-                )
-              })}
+            years.map((year) => {
+              return (
+                <MenuItem key={year} value={year}>
+                  {year}
+                </MenuItem>
+              )
+            })}
           </Select>
         </FormControl>
         <FormControl variant='outlined'>
@@ -129,13 +130,13 @@ export const Calendar = (props) => {
             label='Select Month'
           >
             {months &&
-              months.map((month, index) => {
-                return (
-                  <MenuItem key={month} value={index + 1}>
-                    {month}
-                  </MenuItem>
-                )
-              })}
+            months.map((month,index) => {
+              return (
+                <MenuItem key={month} value={index+1}>
+                  {month}
+                </MenuItem>
+              )
+            })}
           </Select>
         </FormControl>
       </CardActions>

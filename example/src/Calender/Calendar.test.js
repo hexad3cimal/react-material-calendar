@@ -39,22 +39,16 @@ describe('Calendar component test', () => {
     })
   })
   it('should show next month when clicked', () => {
-    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Previous')
-
     act(() => {
-      wrapper.find('.MuiButton-label').at(0).simulate('click')
+      wrapper.find('.MuiButton-label').at(2).simulate('click')
     })
-    expect(wrapper.find('.MuiSelect-selectMenu').at(0).text()).toBe('2020')
-    expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('March')
+    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('May-2020')
   })
 
   it('should show previous month when clicked', () => {
-    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Previous')
-
     act(() => {
       wrapper.find('.MuiButton-label').at(1).simulate('click')
     })
-    expect(wrapper.find('.MuiSelect-selectMenu').at(0).text()).toBe('2020')
-    expect(wrapper.find('.MuiSelect-selectMenu').at(1).text()).toBe('May')
+    expect(wrapper.find('.MuiButton-label').at(0).text()).toBe('Mar-2020')
   })
 })
