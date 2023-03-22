@@ -30,7 +30,7 @@ export interface SelectedDayProps{
 }
 
 export interface CalendarProps{
-  selectedDays: Record<string, Array<Record<string, SelectedDayProps>>>;
+  selectedDays?: Record<string, Array<Record<string, SelectedDayProps>>>;
   month? : number;
   year?: number;
   startYear?: number;
@@ -40,7 +40,7 @@ export interface CalendarProps{
   selectColor? : string
   locale? : string
 
-  getSelectedDays: (days?: Record<string, Array<Record<string, SelectedDayProps>>>) => void
+  getSelectedDays?: (days?: Record<string, Array<Record<string, SelectedDayProps>>>) => void
 }
 export const Calendar = ({selectedDays, year, selectColor, title, month, getSelectedDays, locale, startYear, yearLimit} : CalendarProps) => {
   const [calenderProps, setProps] = useState({
@@ -85,7 +85,9 @@ export const Calendar = ({selectedDays, year, selectColor, title, month, getSele
       selectedDays: selectedDatesInCurrentMonth
     })
 
-    getSelectedDays(calenderProps.selectedDays)
+    if (getSelectedDays) {
+      getSelectedDays(calenderProps.selectedDays)
+    }
   }
 
   const handleYearChange = (event : SelectChangeEvent<number>) => {

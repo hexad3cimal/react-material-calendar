@@ -4,7 +4,7 @@ import { SelectedDayProps } from "./Calendar";
 export interface IDay extends SelectedDayProps{
   date : number | string;
 }
-const isSelected = (date : number, selectedDays:Array<Record<string, SelectedDayProps>>) : SelectedDayProps | undefined => {
+const isSelected = (date : number, selectedDays?:Array<Record<string, SelectedDayProps>>) : SelectedDayProps | undefined => {
   let selectedDate : SelectedDayProps | undefined = undefined;
     selectedDays?.forEach((daysObject) => {
       for (const day in daysObject) {
@@ -14,7 +14,7 @@ const isSelected = (date : number, selectedDays:Array<Record<string, SelectedDay
 
   return selectedDate;
 }
-const getDays = (month :number, year: number, selectedDays : Array<Record<string, SelectedDayProps>> ) => {
+const getDays = (month :number, year: number, selectedDays? : Array<Record<string, SelectedDayProps>> ) => {
   const firstDayOfMonth = new Date(year, month - 1).getDay()
   const noOfDaysInMonth = 32 - new Date(year, month - 1, 32).getDate()
   const days : Array<Array<IDay>> = [];
@@ -47,7 +47,7 @@ const getDays = (month :number, year: number, selectedDays : Array<Record<string
 }
 
 interface MonthProps{
-  selectedDays: Array<Record<string, SelectedDayProps>>;
+  selectedDays?: Array<Record<string, SelectedDayProps>>;
   month: number;
   year: number;
   selectColor?: string;
