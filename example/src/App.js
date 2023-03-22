@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <Calendar month={currentMonth} title="Calendar" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing' ,color:'red' } }, {'8': { 'info': 'testing2' }}] }} />
+      <Calendar selectColor={'red'} month={currentMonth} title="Calendar" getSelectedDays={getSelectedDays} year={currentYear} selectedDays={ {'2020-5': [{ '3': { 'info': 'testing' ,color:'red' } }, {'8': { 'info': 'testing2' }}] }} />
       </header>
     </div>
   );
