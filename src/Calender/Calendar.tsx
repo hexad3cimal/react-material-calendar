@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Month from './Month'
 
 import { getMonths, getWeekDays, getYears } from '../utils/helper'
@@ -41,8 +41,9 @@ export interface CalendarProps{
   locale? : string
 
   getSelectedDays?: (days?: Record<string, Array<Record<string, SelectedDayProps>>>) => void
+  onMonthOrYearChange?: (year : number, month: number) => void
 }
-export const Calendar = ({selectedDays, year, selectColor, title, month, getSelectedDays, locale, startYear, yearLimit} : CalendarProps) => {
+export const Calendar = ({selectedDays, year, selectColor, title, month, getSelectedDays, locale, startYear, yearLimit, onMonthOrYearChange} : CalendarProps) => {
   const [calenderProps, setProps] = useState({
     selectedDays,
     month: month || new Date().getMonth() + 1,
@@ -102,6 +103,15 @@ export const Calendar = ({selectedDays, year, selectColor, title, month, getSele
       month: Number(event.target.value)
     })
   }
+
+  useEffect(()=>{
+    if(calenderProps?.year && calenderProps?.month){
+      if (onMonthOrYearChange) {
+        onMonthOrYearChange(calenderProps.year, calenderProps.month)
+      }
+    }
+
+  },[onMonthOrYearChange,calenderProps?.month,calenderProps?.year])
   const days = getWeekDays(locale || 'en-US')
   const months = getMonths(locale || 'en-US')
   const years = getYears(

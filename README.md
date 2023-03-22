@@ -4,9 +4,9 @@
 
 
 
-    Simple calendar component based on @material-ui/core
-## Changes in 1.0.4
-- Made all input props optional
+    Simple calendar component based on @mui
+## Changes in 1.0.5
+- Added callback function for month or year change
 - Other performance fixes
 
 ## Installation
@@ -59,6 +59,7 @@ Currently, these options can be passed to the module
 | year | Initial year that(YYYY) has to shown when module renders                                                                                                          | 2020                                                       |
 | selectColor | The color for selected field                                                                                                                                      | red                                                        |
 | getSelectedDays | callback function to receive date changes                                                                                                                         | (dates) => {}                                              |
+| onMonthOrYearChange | callback function to receive month or year change                                                                                                                 | (year,month) => {}                                         |
 | selectedDays | Here you can pass the dates which needs to be shown as preselected,   info refers to tool tip to be shown and color refers to background color( default is blue). | {'2020-5': [{ '3': { 'info': 'testing', color :'red' } }]} |
 
 
