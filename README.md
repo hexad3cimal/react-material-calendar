@@ -5,7 +5,7 @@
 
 
     Simple calendar component based on @material-ui/core
-## Changes in 1.0.1
+## Changes in 1.0.3
 - Typescript
 - Updated react to v18 and mui to v5
 - Can use custom selection color
