@@ -1,6 +1,6 @@
 {
   "name": "react-material-event-calendar",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A lightweight event calendar based on material ui",
   "author": "hexad3cimal",
   "license": "MIT",
@@ -32,7 +32,7 @@
   "module": "./dist/index.modern.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {
-    "build": "microbundle build -f modern,umd --globals react=React --no-compress",
+    "build": "microbundle build -f esm --globals react=React --no-compress --sourcemap=false",
     "test": "react-scripts test"
   },
   "eslintConfig": {
