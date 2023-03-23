@@ -5,8 +5,8 @@
 
 
     Simple calendar component based on @mui
-## Changes in 1.0.5
-- Added callback function for month or year change
+## Changes in 1.0.6
+- [FIX] Selected dates not re-rendering on month change
 - Other performance fixes
 
 ## Installation
