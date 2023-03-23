@@ -51,6 +51,13 @@ export const Calendar = ({selectedDays, year, selectColor, title, month, getSele
     title: title
   })
 
+  useEffect(()=>{
+    if(selectedDays)
+    setProps({
+      ...calenderProps,
+      selectedDays
+    })
+  },[selectedDays])
   const nextMonth = () => {
     const currentYear =
       calenderProps.month === 12 ? calenderProps.year + 1 : calenderProps.year
